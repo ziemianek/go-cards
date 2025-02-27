@@ -9,5 +9,5 @@ services:
     container_name: cards-svc
     # command: [
     # ]
-    # ports:
-    #   - "5050:5050"
+    ports:
+      - "8080:8080"

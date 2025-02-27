@@ -1,30 +1,16 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"net/http"
 
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"github.com/ziemianek/go-cards/services/cards/src/app"
 )
 
 func main() {
-	router := chi.NewRouter()
-	router.Use(middleware.Logger)
-
-	router.Get("/hello", helloHandler)
-
-	server := &http.Server{
-		Addr:    ":8080",
-		Handler: router,
-	}
-
-	err := server.ListenAndServe()
+	a := app.New()
+	err := a.Start(context.TODO())
 	if err != nil {
-		fmt.Println("Failed to start the cards service", err)
+		fmt.Printf("failed to start app: %v", err)
 	}
-}
-
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello, World!"))
 }

@@ -3,7 +3,7 @@ name: go-cards  # compose project name
 # https://docs.docker.com/reference/compose-file/services/
 services:
   cards:
-    image: mziemianek/go-cards:v1
+    image: mziemianek/cards-svc:v1
     build:
       context: ./services/cards
     container_name: cards-svc
